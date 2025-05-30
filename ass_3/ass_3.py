@@ -1,5 +1,5 @@
 from tkinter import *
-from logic_3 import bagel_choice_logic, close_window, coffee_choice_logic, toppings_added
+from logic_3 import bagel_choice_logic, close_window, coffee_choice_logic,toppings_added
 
 def main():
     window = Tk()
@@ -33,9 +33,8 @@ def main():
 
     for i, tup in enumerate(bagel_list):
         bagel_choice = Radiobutton(pick_a_bagel, text=f"{tup[0]} (${tup[1]})", variable=bagel_value, value=i)
-        bagel_choice.config(command=lambda: bagel_choice_logic(bagel_value, pick_a_bagel))
+        bagel_choice.config(command=lambda: bagel_choice_logic(bagel_value, tup))
         bagel_choice.grid(column=0, row=i, padx=10, pady=5, sticky="W")
-        bagel_choice.config(command=lambda: toppings_added())
 
     # Pick Your Toppings
     pick_your_toppings = LabelFrame(left_body_frame, text="Pick Your Toppings", pady=5)
@@ -46,12 +45,11 @@ def main():
                             ("Blueberry Jam",.75),
                             ("Raspberry Jam", .75),
                             ("Peach Jelly", .75)]
-    
-    toppings_added = []
+
 
     for i, tup in enumerate(toppings_list):
         toppings_choice = Checkbutton(pick_your_toppings, text=f"{tup[0]} (${tup[1]})")
-        
+        toppings_choice.config(toppings_added(tup))        
         toppings_choice.grid(column=0, row=i, sticky="W", padx=10, pady=5)
 
 

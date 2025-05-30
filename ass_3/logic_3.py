@@ -1,13 +1,14 @@
 from tkinter import *
 
-def bagel_choice_logic(bagel_value, pick_a_bagel):
+bagel_price = None
+def bagel_choice_logic(bagel_value, tup):
     bagel_choice = bagel_value.get()
     if bagel_choice == 0:
-        pick_a_bagel.config(text="white")
+        bagel_price = tup[1]
     else:
-        pick_a_bagel.config(text="whole wheat")
+        bagel_price = tup[1]
 
-
+coffee_price = None
 def coffee_choice_logic(coffee_value, coffee_label, coffee_list):
     coffee_choice = coffee_value.get()
     if coffee_choice == 0:
@@ -19,10 +20,14 @@ def coffee_choice_logic(coffee_value, coffee_label, coffee_list):
     else:
         coffee_label.config(text=coffee_list[coffee_choice][1])
 
+toppings_price = []
+def toppings_added(price):
+    global toppings
+    toppings.append(price)
 
-def toppings_added():
-    3
 
+
+def calculate():
 
 
 
